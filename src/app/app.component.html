@@ -1,8 +1,36 @@
-<p> Hello everyone</p>
+<!-- <p> Hello everyone</p> -->
 
-<input type="button" value="Increment" (click)="increment()"/><br>
+<!-- <input type="button" value="Increment" (click)="increment()"/><br>
 
 
 <h1>My Age : {{myAge}}</h1>
 
-<input type="button" value="Decrement" (click)="decrement()">
+<input type="button" value="Decrement" (click)="decrement()"> -->
+<div>
+    <h1>Species List</h1>
+    <div class="SpeciesCard" *ngFor="let userJSON of userList;let i=index">
+      <div class="userDetails">
+        <!-- <p> ID : {{i+1}}</p> -->
+
+        <p> <b>Name : </b>{{userJSON.name}}</p>
+        <p> <b>Species</b> : {{userJSON.species}}</p>
+        <p> <b>Description</b> : {{userJSON.description || "N/A"}}</p>
+        <p> <b>Thumbnail</b> : {{userJSON.thumbnail|| "N/A"}}</p>
+        <p> <b>Image</b> : {{userJSON.image|| "N/A"}}</p>
+
+        <!-- <div class="educationList">
+          <h2>Education</h2>
+          <div class="education" *ngFor="let education of userJSON.education">
+            <p>Standard :{{education.standard}}</p>
+            <p>School :{{education.school}}</p>
+          </div> -->
+        <!-- </div> -->
+      </div>
+    </div>
+    <div *ngIf="httpStatus==true && userList.length==0" class="loader">
+      <h1>Getting Species List....</h1>
+    </div>
+    <div *ngIf="httpStatus==false && userList.length==0" class="loader">
+      <h3>No Species List Found</h3>
+    </div>
+</div>
